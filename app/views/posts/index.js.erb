@@ -1,0 +1,7 @@
+$("#posts-container").append("<%= j(render(partial: "posts", locals:{posts: @posts} )) %>");
+
+<% if @posts.last_page? %>
+  $("#load-more-posts").hide();
+<% else %>
+  $("#load-more-posts").attr("href", "<%= posts_path(page: (@posts.current_page+1)) %>");
+<% end %>

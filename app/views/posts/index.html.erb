@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <main class="posts-listing col-lg-12">
+      <div class="container">
+          <div class="widget search">
+            <header>
+              <h3 class="h6">Search the blog</h3>
+            </header>
+            <%= form_tag post_search_path, class: 'search-form', remote: true do %>
+              <div class="form-group">
+                <%= text_field_tag :search, nil, placeholder: "What are you looking for?" %>
+                <%= button_tag type: 'submit', class: 'submit' do %>
+                  <i class="icon-search"></i>
+                <% end %>
+              </div>
+              <div class="form-group">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter Articles
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <%= link_to "Odd Articles", odd_even_filter_path(seq_filter: 'odd'), remote: true, class: "dropdown-item"%>
+                    <%= link_to "Even Articles", odd_even_filter_path(seq_filter: 'even'), remote: true, class: "dropdown-item"%>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+        <div class="row" id="posts-container">
+            <%= render partial: 'posts', locals: {posts: @posts}%>
+        </div>
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example">
+          <%= link_to "Load more", posts_path(page: @posts.current_page+1), class: 'btn btn-secondary', id: "load-more-posts", remote: true %>
+        </nav>
+      </div>
+    </main>
+      <!-- Widget [Search Bar Widget]-->
+  </div>
+</div>

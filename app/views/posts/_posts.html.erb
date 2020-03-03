@@ -1,0 +1,36 @@
+<% if posts.present? %>
+  <% posts.each do |post| %>
+    <div class="post col-xl-4">
+      <div class="post-thumbnail">
+        <%= link_to post.link, target: '_blank' do %>
+          <% if post.image.present? %>
+            <%= image_tag post.image, alt: '', class: 'img-fluid' %>
+          <% elsif post.source.blank? && post.post_cover.present? %>
+            <%= image_tag post.post_cover, alt: '', class: 'img-fluid' %>
+          <% else %>
+            <%= image_tag 'default_cover.png', alt: '', class: 'img-fluid' %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="post-details">
+        <div class="post-meta d-flex justify-content-between">
+        </div>
+        <%= link_to post.link, target: '_blank' do %>
+          <h3 class="h4"><%= post.title %></h3>
+        <% end %>
+        <p class="text-muted">
+          <%= truncate(post.small_description,length: 150)%>
+        </p>
+        <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+            <div class="avatar">
+              <%= image_tag "default_logo.png", alt: '', class: 'img-fluid' %>
+            </div>
+            <div class="title"><span><%= post.author || 'Manually uploaded' %></span></div></a>
+          <div class="date"><i class="icon-clock"></i> <%= time_ago_in_words(post.created_at) %></div>
+        </footer>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>No matching data found.</p>
+<% end %>

@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="offset-md-3 col-md-6 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Add New Post</h4>
+        <p class="card-description"> Fill out the following details </p>
+        <%= form_for @post, class: 'forms-sample dropzone',remote: true, html: {id: "dropzone-form-id", multipart: true } do |f| %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="form-group">
+            <label for="exampleInputUsername1">Title</label>
+            <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputUsername1">Short description</label>
+            <%= f.text_area :small_description, class: 'form-control', placeholder: 'Small description' %>
+          </div>
+          <div class="form-group">
+              <div id="files-field"
+                  class="dropzone"
+                  style="border: 2px dashed rgba(0, 0, 0, 0.3);
+                         min-height: 100px !important;">
+               <div class="dz-message"
+                    style="margin: 20px">
+                 Drag image here! Or
+                 <button>
+                   select files
+                 </button>
+               </div>
+             </div>
+          </div>
+          <%= f.submit 'Submit', class: 'btn btn-gradient-primary mr-2' %>
+          <%= button_tag 'Cancel', type: :reset, class: 'btn btn-light', id: "reset_btn"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

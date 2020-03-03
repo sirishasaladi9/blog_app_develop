@@ -1,0 +1,7 @@
+$("#posts-container").html("<%= j(render(partial: "posts", locals:{posts: @posts} )) %>");
+<% if @posts.last_page? %>
+  $("#load-more-posts").hide();
+<% else %>
+  var a = "<%= "#{posts_path({page: (@posts.current_page+1), search: @search_term})}".html_safe %>"
+  $("#load-more-posts").attr("href", a);
+<% end %>
