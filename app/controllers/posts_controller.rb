@@ -41,7 +41,11 @@ class PostsController < ApplicationController
 
   def search
     @search_term = params["search"]
-    @posts = Post.search_by_title(params["search"])
+    @posts = if params["search"].present?
+                Post.search_by_title(params["search"])
+              else
+                Post.all
+              end
     @posts = @posts.order(created_at: :desc)
     if params["seq_filter"].present?
       @seq_filter = params["seq_filter"]

@@ -29,7 +29,8 @@
              </div>
           </div>
           <%= f.submit 'Submit', class: 'btn btn-gradient-primary mr-2' %>
-          <%= button_tag 'Cancel', type: :reset, class: 'btn btn-light', id: "reset_btn"%>
+          <%= button_tag 'Clear', type: :reset, class: 'btn btn-outline-primary', id: "reset_btn"%>
+          <%= link_to "Cancel", root_path, class: "btn btn-light"%>
         <% end %>
       </div>
     </div>

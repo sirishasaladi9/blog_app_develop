@@ -18,7 +18,7 @@
 //= require bootstrap
 //= require front
 
-$(document).ready(function(){
+$(document).on('turbolinks:load ready', function(){
   $('#customSwitch1').on('change', function (e, data) {
       $("body").toggleClass("custom-back")
   });

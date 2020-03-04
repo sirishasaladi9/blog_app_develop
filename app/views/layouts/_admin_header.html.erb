@@ -6,9 +6,7 @@
 
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item nav-logout d-none d-lg-block">
-        <a class="nav-link" href="#">
-          Logout
-        </a>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"%>
       </li>
 
     </ul>
