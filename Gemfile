@@ -42,7 +42,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rails_12factor', group: :production
 
 gem 'devise'
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
